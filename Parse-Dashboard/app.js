@@ -65,14 +65,14 @@ module.exports = function(config, options) {
     const authInstance = new Authentication(users, useEncryptedPasswords, mountPath);
     authInstance.initialize(app, { cookieSessionSecret: options.cookieSessionSecret });
 
-    // CSRF error handler
-    app.use(function (err, req, res, next) {
-      if (err.code !== 'EBADCSRFTOKEN') return next(err)
+    // // CSRF error handler
+    // app.use(function (err, req, res, next) {
+    //   if (err.code !== 'EBADCSRFTOKEN') return next(err)
 
-      // handle CSRF token errors here
-      res.status(403)
-      res.send('form tampered with')
-    });
+    //   // handle CSRF token errors here
+    //   res.status(403)
+    //   res.send('form tampered with')
+    // });
 
     // Serve the configuration.
     app.get('/parse-dashboard-config.json', function(req, res) {
